@@ -1,3 +1,4 @@
+/*
 package com.consum.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -42,3 +43,4 @@ public class KafkaConsumerConfig {
         return factory;
     }
 }
+*/
