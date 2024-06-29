@@ -1,6 +1,12 @@
 //This will attempt 3 times
 ===========================================================================================================================================================
 
+Creates:
+strange_topic
+strange_topic__dlt
+strange_topic_0
+strange_topic_1
+strange_topic_2
 @RetryableTopic(attempts = "4")
 @KafkaListener(topics = "strange-topic", groupId = "sample_group", topicPartitions = {@TopicPartition(topic = "strange-topic", partitions = "2")})
 public void consumeEvents(Customer customer){
