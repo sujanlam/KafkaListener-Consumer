@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class KafkaMessageListener {
 
-    @RetryableTopic(attempts = "4") //This will attempt 3 times
+    @RetryableTopic(attempts = "4", backoff= @Backoff(delay=3000, multiplier=1.5, maxDelay=15000) //This will attempt 3 times
     @KafkaListener(topics = "strange-topic", groupId = "sample_group", topicPartitions = {@TopicPartition(topic = "strange-topic", partitions = "2")})
     public void consumeEvents(Customer customer){
         log.info("Consumer received message: {} ",customer.toString());
