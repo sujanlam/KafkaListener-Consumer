@@ -7,7 +7,9 @@ strange_topic_0
 strange_topic_1
 strange_topic_2
 [[AFter three attempts, it will be pushed to dead letter topic]]
-@RetryableTopic(attempts = "4")
+@RetryableTopic(attempts = "4", backoff= @Backoff(delay=3000, multiplier=1.5, maxDelay=15000)
+//If you do not want retry for some exceptions, you can mention them.
+//@RetryableTopic(attempts = "4", exclude = {NullPointerException.class, RuntimeException.class})
 @KafkaListener(topics = "strange-topic", groupId = "sample_group", topicPartitions = {@TopicPartition(topic = "strange-topic", partitions = "2")})
 public void consumeEvents(Customer customer){
     log.info("Consumer received message: {} ",customer.toString());
